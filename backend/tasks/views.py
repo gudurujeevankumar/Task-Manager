@@ -9,6 +9,7 @@ from .forms import UserRegisterForm, TaskForm
 
 class CustomLoginView(LoginView):
     template_name = 'login.html'
+    redirect_authenticated_user = True
     
     def form_invalid(self, form):
         messages.error(self.request, "Invalid username or password. Please try again.")
