@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | TaskFlow{% endblock %}
+
+{% block content %}
+<div style="display: flex; flex-direction: column; gap: 1.5rem; flex-grow: 1;">
+    <!-- Dashboard Header -->
+    <div class="board-header">
+        <div class="board-title">
+            <h1>
+                Workspace Board <span>({{ total_count }} total)</span>
+            </h1>
+        </div>
+
+        <div class="filter-section">
+            <input
+                id="search-box"
+                type="text"
+                class="form-control search-input"
+                placeholder="Search tasks..."
+            />
+            <a href="{% url 'task_create' %}" class="btn btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add Task
+            </a>
+        </div>
+    </div>
+
+    <!-- Kanban Board Grid -->
+    <div class="kanban-board">
+        <!-- To Do Column -->
+        <div class="board-column column-todo">
+            <div class="column-header">
+                <span class="column-title">
+                    <span class="column-dot"></span>
+                    To Do
+                </span>
+                <span class="column-badge" id="badge-todo">{{ todo_tasks.count }}</span>
+            </div>
+            
+            <div class="cards-container" id="container-todo">
+                {% if todo_tasks %}
+                    {% for task in todo_tasks %}
+                        {% include 'includes/task_card.html' with task=task %}
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <span>No tasks here</span>
+                        <a href="{% url 'task_create' %}" class="btn btn-secondary" style="padding: 0.2rem 0.5rem; font-size: 0.75rem; margin-top: 0.25rem;">+ Create</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="board-column column-progress">
+            <div class="column-header">
+                <span class="column-title">
+                    <span class="column-dot"></span>
+                    In Progress
+                </span>
+                <span class="column-badge" id="badge-progress">{{ in_progress_tasks.count }}</span>
+            </div>
+            
+            <div class="cards-container" id="container-progress">
+                {% if in_progress_tasks %}
+                    {% for task in in_progress_tasks %}
+                        {% include 'includes/task_card.html' with task=task %}
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <span>No tasks here</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Done Column -->
+        <div class="board-column column-done">
+            <div class="column-header">
+                <span class="column-title">
+                    <span class="column-dot"></span>
+                    Done
+                </span>
+                <span class="column-badge" id="badge-done">{{ done_tasks.count }}</span>
+            </div>
+            
+            <div class="cards-container" id="container-done">
+                {% if done_tasks %}
+                    {% for task in done_tasks %}
+                        {% include 'includes/task_card.html' with task=task %}
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <span>No tasks here</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Real-time Filter JS Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchBox = document.getElementById('search-box');
+        
+        searchBox.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.task-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.task-title').textContent.toLowerCase();
+                const desc = card.querySelector('.task-desc').textContent.toLowerCase();
+                
+                if (title.includes(query) || desc.includes(query)) {
+                    card.classList.remove('hide');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+            
+            // Dynamically recalculate badge numbers based on filtered visibility
+            updateBadge('todo');
+            updateBadge('progress');
+            updateBadge('done');
+        });
+        
+        function updateBadge(columnName) {
+            const columnEl = document.querySelector(`.column-${columnName}`);
+            if (!columnEl) return;
+            const visibleCards = columnEl.querySelectorAll('.task-card:not(.hide)').length;
+            const badge = document.getElementById(`badge-${columnName}`);
+            if (badge) {
+                badge.textContent = visibleCards;
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Login | TaskFlow{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-card glass-container">
+        <div class="auth-header">
+            <div class="logo-section" style="justify-content: center; margin-bottom: 1rem;">
+                <div class="logo-icon">✓</div>
+                <span class="logo-text" style="font-size: 1.8rem;">TaskFlow</span>
+            </div>
+            <p>Sign in to manage your tasks</p>
+        </div>
+
+        <div class="auth-tabs">
+            <a href="{% url 'login' %}" class="auth-tab active">Login</a>
+            <a href="{% url 'register' %}" class="auth-tab">Register</a>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Username</label>
+                <input
+                    type="text"
+                    name="username"
+                    id="id_username"
+                    class="form-control"
+                    placeholder="Enter your username"
+                    required
+                    autofocus
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="id_password">Password</label>
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        name="password"
+                        id="id_password"
+                        class="form-control"
+                        placeholder="Enter your password"
+                        required
+                    />
+                    <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('id_password', this)" title="Show password">🙈</button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-submit-btn">
+                Login
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

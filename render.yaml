@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: taskflow-manager
+    runtime: python
+    rootDir: backend
+    buildCommand: ./build.sh
+    startCommand: gunicorn task_manager.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.5
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "*"

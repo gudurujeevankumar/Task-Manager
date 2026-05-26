@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Register | TaskFlow{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-card glass-container">
+        <div class="auth-header">
+            <div class="logo-section" style="justify-content: center; margin-bottom: 1rem;">
+                <div class="logo-icon">✓</div>
+                <span class="logo-text" style="font-size: 1.8rem;">TaskFlow</span>
+            </div>
+            <p>Create an account to get started</p>
+        </div>
+
+        <div class="auth-tabs">
+            <a href="{% url 'login' %}" class="auth-tab">Login</a>
+            <a href="{% url 'register' %}" class="auth-tab active">Register</a>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {% if 'password' in field.name %}
+                        <div class="password-wrapper">
+                            {{ field }}
+                            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('{{ field.id_for_label }}', this)" title="Show password">🙈</button>
+                        </div>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                    {% if field.help_text %}
+                        <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem; display: block; max-width: 100%;">
+                            {{ field.help_text|safe }}
+                        </small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary auth-submit-btn">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
