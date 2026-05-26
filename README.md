@@ -1,119 +1,288 @@
+# 🚀 TaskFlow – Plain Django Task Manager
+
+TaskFlow is a premium **Task Management Web Application** developed using **plain Django**, standard templates, forms, and session-based authentication.
+
+The application provides a clean and modern **Kanban Board interface** for managing tasks visually while maintaining a responsive and elegant user experience using an **Obsidian Glassmorphism UI Theme**.
+
+---
+
 # 📌 Project Explanation
 
 ## Overview
-TaskFlow is a premium **task management web application** developed using **plain Django** with server-side rendering. The project allows users to create, manage, and track tasks using a visual **Kanban board** interface.
+TaskFlow is designed to help users organize and track tasks efficiently.
 
-Unlike modern SPA frameworks, TaskFlow uses Django templates, forms, and session-based authentication to deliver a complete full-stack experience.
+The application follows a traditional **server-side rendering architecture**, where Django handles both backend processing and frontend rendering.
 
----
+Users can:
 
-## Objective
-The purpose of TaskFlow is to provide a simple and responsive platform where users can:
-
-- Organize tasks efficiently
-- Track task progress visually
-- Manage work using categorized stages
-- Experience a clean and modern user interface
+- Create tasks
+- Edit tasks
+- Delete tasks
+- Track progress visually
+- Manage workflow through categorized stages
 
 ---
 
-## System Workflow
+## Workflow
 
 ```text
 User Authentication
-        ↓
-Access Dashboard
-        ↓
-Create / Edit / Delete Tasks
-        ↓
-Store Data in SQLite Database
-        ↓
-Display Tasks in Kanban Board
-        ↓
+       ↓
+Dashboard Access
+       ↓
+Create / Update Tasks
+       ↓
+Store in Database
+       ↓
+Display in Kanban Board
+       ↓
 Search and Track Progress
 ```
 
 ---
 
-## Core Functionalities
+# ✨ Features
 
-### User Authentication
-TaskFlow uses Django’s built-in session authentication system.
+## Task Management
+- Create Tasks
+- Update Tasks
+- Delete Tasks
+- Organize Tasks
 
-Features:
-- User Registration
-- User Login
+---
+
+## Kanban Dashboard
+Tasks are categorized into:
+
+- 🟠 To Do
+- 🔵 In Progress
+- 🟢 Done
+
+---
+
+## Authentication
+Secure authentication using:
+
+- Registration
+- Login
 - Session Management
-- Secure Access Control
 
 ---
 
-### Task Management
-Users can perform complete CRUD operations:
+## UI Features
 
-- Create tasks
-- View tasks
-- Update task information
-- Delete tasks
-
-Each task includes:
-- Title
-- Description
-- Stage
+- 🌑 Dark Theme
+- ☀️ Light Theme
+- 📱 Responsive Layout
+- 🔍 Dynamic Search
+- 🙈🙉 Password Visibility Toggle
+- ✨ Smooth Animations
 
 ---
 
-### Kanban Dashboard
-Tasks are organized into three workflow stages:
+# 🛠️ Tech Stack
 
-- **To Do** → Tasks waiting to start
-- **In Progress** → Tasks currently being worked on
-- **Done** → Completed tasks
-
-This structure helps users visualize productivity and progress.
-
----
-
-### Search System
-TaskFlow includes an instant search feature that:
-
-- Filters tasks dynamically
-- Searches title and description
-- Updates task counts automatically
-
----
-
-### UI Design
-The application follows an **Obsidian Glassmorphism Theme**.
-
-Features:
-- Dark Mode
-- Light Mode
-- Smooth Transitions
-- Responsive Design
-- Interactive Password Toggle (🙈 / 🙉)
-
----
-
-## Technologies Used
-
-### Backend
+## Backend
 - Django
 - Gunicorn
 - WhiteNoise
 
-### Database
-- SQLite3
-
-### Frontend
+## Frontend
 - HTML5
 - CSS3
 - JavaScript
 
-### Deployment
+## Database
+- SQLite3
+
+## Deployment
 - Render
 
 ---
 
-## Conclusion
-TaskFlow is a lightweight yet complete Django-based task management system that combines authentication, task tracking, and modern UI design into a responsive productivity platform.
+# 📷 Screenshots
+
+## 1. 📱 Responsive Screenshots (All Devices)
+
+Desktop • Tablet • Mobile
+
+<p align="center">
+<img src="screenshots/responsive_all_devices.png" width="100%">
+</p>
+
+---
+
+# ☀️ Light Theme
+
+## Login • Signup • Dashboard
+
+<table>
+<tr>
+
+<td align="center">
+<b>Login Page</b><br>
+<img src="screenshots/light_login.png" width="300">
+</td>
+
+<td align="center">
+<b>Signup Page</b><br>
+<img src="screenshots/light_signup.png" width="300">
+</td>
+
+<td align="center">
+<b>Dashboard</b><br>
+<img src="screenshots/light_dashboard.png" width="300">
+</td>
+
+</tr>
+</table>
+
+---
+
+# 🌑 Dark Theme
+
+## Login • Signup • Dashboard
+
+<table>
+<tr>
+
+<td align="center">
+<b>Login Page</b><br>
+<img src="screenshots/dark_login.png" width="300">
+</td>
+
+<td align="center">
+<b>Signup Page</b><br>
+<img src="screenshots/dark_signup.png" width="300">
+</td>
+
+<td align="center">
+<b>Dashboard</b><br>
+<img src="screenshots/dark_dashboard.png" width="300">
+</td>
+
+</tr>
+</table>
+
+---
+
+# 💻 Local Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/Task-Manager.git
+cd Task-Manager/backend
+```
+
+## Create Virtual Environment
+
+### macOS/Linux
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+---
+
+## Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Run Migrations
+
+```bash
+python manage.py migrate
+```
+
+---
+
+## Start Server
+
+```bash
+python manage.py runserver
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000/
+```
+
+---
+
+# ☁️ Render Deployment
+
+Configure:
+
+```text
+Runtime:
+Python
+```
+
+```text
+Root Directory:
+backend
+```
+
+```text
+Build Command:
+./build.sh
+```
+
+```text
+Start Command:
+gunicorn task_manager.wsgi:application
+```
+
+Environment Variables:
+
+```text
+SECRET_KEY=your_secret_key
+DEBUG=False
+ALLOWED_HOSTS=*
+```
+
+---
+
+# 📂 Project Structure
+
+```text
+Task-Manager
+│
+├── backend
+│   ├── task_manager
+│   ├── tasks
+│   ├── templates
+│   ├── static
+│   └── manage.py
+│
+├── screenshots
+│   ├── responsive_all_devices.png
+│   ├── light_login.png
+│   ├── light_signup.png
+│   ├── light_dashboard.png
+│   ├── dark_login.png
+│   ├── dark_signup.png
+│   └── dark_dashboard.png
+│
+└── README.md
+```
+
+---
+
+# 👨‍💻 Author
+
+Developed using Django with a modern responsive UI and Kanban workflow system.
