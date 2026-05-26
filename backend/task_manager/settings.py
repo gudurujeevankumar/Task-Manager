@@ -78,22 +78,21 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASE_DIR = os.environ.get('DATABASE_DIR', '')
-if DATABASE_DIR and os.path.exists(DATABASE_DIR):
-    DB_PATH = Path(DATABASE_DIR) / 'db.sqlite3'
-else:
-    # Check if we are running in Render with a mounted persistent disk at /data
-    if os.path.exists('/data'):
-        DB_PATH = Path('/data') / 'db.sqlite3'
-    else:
-        DB_PATH = BASE_DIR / 'db.sqlite3'
+import dj_database_url
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DB_PATH,
+if os.getenv("DATABASE_URL"):
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.getenv("DATABASE_URL")
+        )
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
