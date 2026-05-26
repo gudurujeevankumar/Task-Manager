@@ -2,16 +2,17 @@
 
 TaskFlow is a premium **Task Management Web Application** developed using **plain Django**, standard templates, forms, and session-based authentication.
 
-The application provides a clean and modern **Kanban Board interface** for managing tasks visually while maintaining a responsive and elegant user experience using an **Obsidian Glassmorphism UI Theme**.
+It provides a modern **Kanban Board interface** for organizing and tracking tasks using an elegant **Obsidian Glassmorphism UI** with responsive layouts and smooth interactions.
 
 ---
 
 # 📌 Project Explanation
 
 ## Overview
-TaskFlow is designed to help users organize and track tasks efficiently.
 
-The application follows a traditional **server-side rendering architecture**, where Django handles both backend processing and frontend rendering.
+TaskFlow is designed to help users create, manage, and track tasks efficiently.
+
+The application uses **server-side rendering with Django templates**, making it lightweight and easy to deploy.
 
 Users can:
 
@@ -19,7 +20,7 @@ Users can:
 - Edit tasks
 - Delete tasks
 - Track progress visually
-- Manage workflow through categorized stages
+- Organize workflow into stages
 
 ---
 
@@ -27,15 +28,15 @@ Users can:
 
 ```text
 User Authentication
-       ↓
+        ↓
 Dashboard Access
-       ↓
-Create / Update Tasks
-       ↓
+        ↓
+Create / Manage Tasks
+        ↓
 Store in Database
-       ↓
+        ↓
 Display in Kanban Board
-       ↓
+        ↓
 Search and Track Progress
 ```
 
@@ -43,95 +44,131 @@ Search and Track Progress
 
 # ✨ Features
 
-## Task Management
+<table>
+<tr>
+
+<td width="50%">
+
+### 📝 Task Management
 - Create Tasks
 - Update Tasks
 - Delete Tasks
 - Organize Tasks
 
----
+</td>
 
-## Kanban Dashboard
-Tasks are categorized into:
+<td width="50%">
 
+### 📋 Kanban Dashboard
 - 🟠 To Do
 - 🔵 In Progress
 - 🟢 Done
 
+</td>
+
+</tr>
+</table>
+
 ---
 
-## Authentication
-Secure authentication using:
+<table>
+<tr>
 
+<td width="50%">
+
+### 🔐 Authentication
 - Registration
 - Login
 - Session Management
 
----
+</td>
 
-## UI Features
+<td width="50%">
 
+### 🎨 UI Features
 - 🌑 Dark Theme
 - ☀️ Light Theme
-- 📱 Responsive Layout
+- 📱 Responsive Design
 - 🔍 Dynamic Search
-- 🙈🙉 Password Visibility Toggle
-- ✨ Smooth Animations
+- 🙈🙉 Password Toggle
+
+</td>
+
+</tr>
+</table>
 
 ---
 
 # 🛠️ Tech Stack
 
-## Backend
-- Django
-- Gunicorn
-- WhiteNoise
+<table>
+<tr>
 
-## Frontend
-- HTML5
-- CSS3
-- JavaScript
+<td width="25%" valign="top">
 
-## Database
-- SQLite3
+### Backend
+- Django  
+- Gunicorn  
+- WhiteNoise  
 
-## Deployment
-- Render
+</td>
+
+<td width="25%" valign="top">
+
+### Frontend
+- HTML5  
+- CSS3  
+- JavaScript  
+
+</td>
+
+<td width="25%" valign="top">
+
+### Database
+- SQLite3  
+
+</td>
+
+<td width="25%" valign="top">
+
+### Deployment
+- Render  
+
+</td>
+
+</tr>
+</table>
 
 ---
 
 # 📷 Screenshots
 
-## 1. 📱 Responsive Screenshots (All Devices)
-
-Desktop • Tablet • Mobile
+## 📱 Responsive Layout (All Devices)
 
 <p align="center">
-<img src="screenshots/responsive_all_devices.png" width="100%">
+<img src="screenshots/responsive_all_devices.png" width="95%">
 </p>
 
 ---
 
 # ☀️ Light Theme
 
-## Login • Signup • Dashboard
-
 <table>
 <tr>
 
 <td align="center">
-<b>Login Page</b><br>
-<img src="screenshots/light_login.png" width="300">
+<b>Login</b><br>
+<img src="screenshots/light_login.png" width="100%">
 </td>
 
 <td align="center">
-<b>Signup Page</b><br>
-<img src="screenshots/light_signup.png" width="300">
+<b>Signup</b><br>
+<img src="screenshots/light_signup.png" width="100%">
 </td>
 
 <td align="center">
 <b>Dashboard</b><br>
-<img src="screenshots/light_dashboard.png" width="300">
+<img src="screenshots/light_dashboard.png" width="100%">
 </td>
 
 </tr>
@@ -141,24 +178,22 @@ Desktop • Tablet • Mobile
 
 # 🌑 Dark Theme
 
-## Login • Signup • Dashboard
-
 <table>
 <tr>
 
 <td align="center">
-<b>Login Page</b><br>
-<img src="screenshots/dark_login.png" width="300">
+<b>Login</b><br>
+<img src="screenshots/dark_login.png" width="100%">
 </td>
 
 <td align="center">
-<b>Signup Page</b><br>
-<img src="screenshots/dark_signup.png" width="300">
+<b>Signup</b><br>
+<img src="screenshots/dark_signup.png" width="100%">
 </td>
 
 <td align="center">
 <b>Dashboard</b><br>
-<img src="screenshots/dark_dashboard.png" width="300">
+<img src="screenshots/dark_dashboard.png" width="100%">
 </td>
 
 </tr>
@@ -171,13 +206,15 @@ Desktop • Tablet • Mobile
 ## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Task-Manager.git
+git clone https://github.com/gudurujeevankumar/Task-Manager.git
 cd Task-Manager/backend
 ```
 
+---
+
 ## Create Virtual Environment
 
-### macOS/Linux
+### macOS / Linux
 
 ```bash
 python -m venv venv
@@ -223,7 +260,7 @@ http://127.0.0.1:8000/
 
 ---
 
-# ☁️ Render Deployment
+# ☁️ Deployment (Render)
 
 Configure:
 
@@ -285,4 +322,6 @@ Task-Manager
 
 # 👨‍💻 Author
 
-Developed using Django with a modern responsive UI and Kanban workflow system.
+**Jeevan Kumar**
+
+Built using Django with responsive UI and Kanban workflow.
